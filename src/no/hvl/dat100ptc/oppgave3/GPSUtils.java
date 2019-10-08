@@ -90,9 +90,9 @@ public class GPSUtils {
 
 	}
 
-	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
+	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2, double secs) {
 
-		int secs = 0; // Hvor kommer tiden fra????
+		
 		double speed, distance;
 
 		distance = distance(gpspoint1,gpspoint2);
@@ -109,13 +109,39 @@ public class GPSUtils {
 
 	public static String formatTime(int secs) {
 
-		String timestr;
-		String TIMESEP = ":";
-
 		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
 		
+		int hour = secs / 3600;
+		int sec = secs % 3600;
+				
+		String h = "";
+		if (hour <= 10) {
+		h = "0";
+		}
+				
+		int min = sec / 60;
+		sec = sec % 60;
+				
+		String m = "";
+		if (min <= 10) {
+		m = "0";
+		}
+				
+		String s = "";
+		if (sec <= 10) {
+		s = "0";
+		}
+			
+		String TIMESEP = ":";
+		String str = h + hour + TIMESEP + m + min + TIMESEP + s + sec;
+				
+		StringBuffer buf = new StringBuffer(str);
+
+		while (buf.length() < 10) {
+		buf.insert(0, ' ');
+		}
+				  
+		return buf.toString();
 		// TODO - SLUTT
 
 	}
@@ -123,13 +149,15 @@ public class GPSUtils {
 
 	public static String formatDouble(double d) {
 
-		String str;
+		String str = String.format("%.2f", d);
 
-		// TODO - START
+		StringBuffer buf = new StringBuffer(str);
 
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		while (buf.length() < TEXTWIDTH) {
+		  buf.insert(0, ' ');
+		}
+		
+		return buf.toString();
 		
 	}
 }
