@@ -67,12 +67,22 @@ public class GPSUtils {
 
 	public static double distance(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		double d;
+		double d, dlon, dlat,a,c;
 		double latitude1, longitude1, latitude2, longitude2;
 
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
+		latitude1 = gpspoint1.getLatitude();
+		longitude1 = gpspoint1.getLongitude();
+		
+		latitude2 = gpspoint2.getLatitude();
+		longitude2 = gpspoint2.getLongitude();
+		
+		dlon = longitude2 - longitude1;
+		dlat = latitude2 - latitude1;
+		a = pow(sin(dlat/2),2)+ cos(latitude1) * cos(latitude2) * pow(sin(dlon/2),2);
+		c = 2 * atan2( sqrt(a), sqrt(1-a) );
+		d = R * c;
+		
+		return d;
 
 		// TODO - SLUTT
 
