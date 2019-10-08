@@ -37,6 +37,7 @@ public class GPSUtils {
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
 		// TODO - START
+		gpspoints.length
 		
 		throw new UnsupportedOperationException(TODO.method());
 		
