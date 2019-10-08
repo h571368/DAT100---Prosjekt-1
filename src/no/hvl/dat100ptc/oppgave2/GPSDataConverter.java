@@ -34,7 +34,7 @@ public class GPSDataConverter {
 
 		GPSPoint gpspoint;
 
-		// TODO - START ;
+		int tid = toSeconds(timeStr);
 		
 		throw new UnsupportedOperationException(TODO.method());
 
