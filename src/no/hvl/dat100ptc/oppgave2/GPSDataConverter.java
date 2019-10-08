@@ -31,7 +31,7 @@ public class GPSDataConverter {
 	}
 
 	public static GPSPoint convert(String timeStr, String latitudeStr, String longitudeStr, String elevationStr) {
-
+		
 		GPSPoint gpspoint;
 
 		int tid = toSeconds(timeStr);
