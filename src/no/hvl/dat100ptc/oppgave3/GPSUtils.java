@@ -67,6 +67,8 @@ public class GPSUtils {
 
 	public static double distance(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
+		// TODO - START
+		
 		double d, dlon, dlat,a,c;
 		double latitude1, longitude1, latitude2, longitude2;
 
@@ -90,12 +92,16 @@ public class GPSUtils {
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		int secs;
-		double speed;
+		int secs = 0; // Hvor kommer tiden fra????
+		double speed, distance;
 
-		// TODO - START
+		distance = distance(gpspoint1,gpspoint2);
+		
+		speed = distance/secs;
+		
+		return speed;
 
-		throw new UnsupportedOperationException(TODO.method());
+
 
 		// TODO - SLUTT
 
