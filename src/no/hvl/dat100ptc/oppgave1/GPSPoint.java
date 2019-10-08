@@ -16,8 +16,6 @@ public class GPSPoint {
 		this.elevation = elevation;
 
 		//throw new UnsupportedOperationException(TODO.construtor("GPSPoint"));
-		
-		
 
 	}
 
