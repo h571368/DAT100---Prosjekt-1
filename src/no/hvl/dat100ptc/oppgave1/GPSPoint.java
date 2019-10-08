@@ -2,13 +2,13 @@ package no.hvl.dat100ptc.oppgave1;
 
 import no.hvl.dat100ptc.TODO;
 
-public class GPSPoint {
+public class GPSPoint { // TEST
 
 	// TODO - objektvariable
 		
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
-		// TODO - konstruktur
+		// TODO - konstru
 
 		throw new UnsupportedOperationException(TODO.construtor("GPSPoint"));
 
@@ -18,7 +18,7 @@ public class GPSPoint {
 	public int getTime() {
 		
 		throw new UnsupportedOperationException(TODO.method());
-		
+		return 0;
 	}
 
 	public void setTime(int time) {
