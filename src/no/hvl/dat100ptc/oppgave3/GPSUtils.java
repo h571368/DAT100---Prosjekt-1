@@ -90,9 +90,9 @@ public class GPSUtils {
 
 	}
 
-	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2, double secs) {
+	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		
+		double secs = 10;
 		double speed, distance;
 
 		distance = distance(gpspoint1,gpspoint2);
