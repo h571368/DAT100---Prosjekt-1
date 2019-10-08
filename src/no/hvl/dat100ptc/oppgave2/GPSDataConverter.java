@@ -14,15 +14,19 @@ public class GPSDataConverter {
 
 	public static int toSeconds(String timestr) {
 		
-		int secs;
-		int hr, min, sec;
+		int secs, hr, min, sec;
 		
-		// TODO
-		// OPPGAVE - START
+		String deling = timestr.split("T")[1];
+		hr = Integer.parseInt(deling.split(":")[0]);
+		min = Integer.parseInt(deling.split(":")[1]);
+		double sek = Double.parseDouble(deling.split(":")[2]);
+		sec = (int) sek;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		//throw new UnsupportedOperationException(TODO.method());
 
-		// OPPGAVE - SLUTT
+		secs = hr*60*60 + min*60 + sec;
+		
+		return secs;
 		
 	}
 
