@@ -1,8 +1,6 @@
 package no.hvl.dat100ptc.oppgave3;
 
 import static java.lang.Math.*;
-
-import no.hvl.dat100ptc.TODO;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
 public class GPSUtils {
@@ -38,7 +36,6 @@ public class GPSUtils {
 
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
-		// TODO - START
 		double[] latitudes = new double[gpspoints.length];
 		int i = 0;
 		while(i < gpspoints.length) {
@@ -46,12 +43,11 @@ public class GPSUtils {
 		}
 		
 		return latitudes;
-		// TODO - SLUTT
+	
 	}
 
 	public static double[] getLongitudes(GPSPoint[] gpspoints) {
 
-		// TODO - START
 		double[] longitudes = new double[gpspoints.length];
 		int i = 0;
 		while(i < gpspoints.length) {
@@ -59,7 +55,7 @@ public class GPSUtils {
 		}
 		
 		return longitudes;
-		// TODO - SLUTT
+
 
 	}
 
@@ -67,8 +63,6 @@ public class GPSUtils {
 
 	public static double distance(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		// TODO - START
-		
 		double d, dlon, dlat,a,c;
 		double latitude1, longitude1, latitude2, longitude2;
 
@@ -86,8 +80,6 @@ public class GPSUtils {
 		
 		return d;
 
-		// TODO - SLUTT
-
 	}
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
@@ -101,16 +93,10 @@ public class GPSUtils {
 		
 		return speed;
 
-
-
-		// TODO - SLUTT
-
 	}
 
 	public static String formatTime(int secs) {
 
-		// TODO - START
-		
 		int hour = secs / 3600;
 		int sec = secs % 3600;
 				
@@ -142,9 +128,8 @@ public class GPSUtils {
 		}
 				  
 		return buf.toString();
-		// TODO - SLUTT
-
 	}
+	
 	private static int TEXTWIDTH = 10;
 
 	public static String formatDouble(double d) {
