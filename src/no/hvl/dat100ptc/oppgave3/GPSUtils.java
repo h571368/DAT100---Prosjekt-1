@@ -57,7 +57,7 @@ public class GPSUtils {
 		return longitudes;
 	}
 
-	private static int R = 6371000; // jordens radius
+	private static int R = 6371000; //jordens radius
 
 	public static double distance(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
