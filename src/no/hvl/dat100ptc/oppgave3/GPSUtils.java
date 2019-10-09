@@ -41,6 +41,7 @@ public class GPSUtils {
 		latitudes[i] = gpspoints[i].getLatitude();
 		i++;
 		}
+		
 		return latitudes;
 	}
 
