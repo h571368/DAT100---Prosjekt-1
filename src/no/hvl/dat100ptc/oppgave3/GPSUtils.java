@@ -8,7 +8,6 @@ public class GPSUtils {
 	public static double findMax(double[] da) {
 
 		double max; 
-		
 		max = da[0];
 		
 		for (double d : da) {
@@ -16,7 +15,6 @@ public class GPSUtils {
 				max = d;
 			}
 		}
-		
 		return max;
 	}
 
@@ -78,14 +76,11 @@ public class GPSUtils {
 		dlon = longitude2 - longitude1;
 		dlon = Math.toRadians(dlon);
 		dlat = latitude2 - latitude1;
-		//dlat = Math.toRadians(dlat);
 		a = pow(sin(dlat/2),2)+ cos(latitude1) * cos(latitude2) * pow(sin(dlon/2),2);
 		c = 2 * atan2( sqrt(a), sqrt(1-a) );
 		d = R * c;
 		
-		
 	    return d;
-
 	}
 	
 
