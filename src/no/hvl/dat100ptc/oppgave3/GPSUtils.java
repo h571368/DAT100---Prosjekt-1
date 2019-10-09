@@ -3,7 +3,7 @@ package no.hvl.dat100ptc.oppgave3;
 import static java.lang.Math.*;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
-public class GPSUtils {
+public class GPSUtils {//DONE
 
 	public static double findMax(double[] da) {
 
@@ -43,9 +43,7 @@ public class GPSUtils {
 		latitudes[i] = gpspoints[i].getLatitude();
 		i++;
 		}
-		
 		return latitudes;
-	
 	}
 
 	public static double[] getLongitudes(GPSPoint[] gpspoints) {
@@ -57,10 +55,7 @@ public class GPSUtils {
 		longitudes[i] = gpspoints[i].getLongitude();
 		i++;
 		}
-		
 		return longitudes;
-
-
 	}
 
 	private static int R = 6371000; // jordens radius
