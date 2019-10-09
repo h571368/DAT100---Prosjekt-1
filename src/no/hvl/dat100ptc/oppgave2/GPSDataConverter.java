@@ -17,6 +17,7 @@ public class GPSDataConverter {
 		int secs, hr, min, sec;
 		
 		String deling = timestr.split("T")[1];
+		deling = deling.replace("Z", "");
 		hr = Integer.parseInt(deling.split(":")[0]);
 		min = Integer.parseInt(deling.split(":")[1]);
 		double sek = Double.parseDouble(deling.split(":")[2]);
@@ -37,9 +38,6 @@ public class GPSDataConverter {
 		
 		GPSPoint gpspoint = new GPSPoint(tid, latitude, longitude, elevation);
 		return gpspoint;
-		
-
-		// OPPGAVE - SLUTT ;
 	    
 	}
 	
