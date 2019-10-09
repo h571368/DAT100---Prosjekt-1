@@ -112,11 +112,16 @@ public class GPSComputer {
 
 	// beregn kcal gitt weight og tid der kjøres med en gitt hastighet
 	public double kcal(double weight, int secs, double speed) {
-
-		double kcal;
+		
+		
+		double hour = secs/3600;
+		double kcal = 1;
+		double met = kcal/weight*hour;	
+		double forbrent = 0;
+		
 
 		// MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
-		double met = 0;		
+		
 		double speedmph = speed * MS;
 
 		// TODO - START

@@ -9,7 +9,6 @@ public class GPSPoint {
 		
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
-		// TODO - konstruktur
 		this.time = time;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -17,7 +16,6 @@ public class GPSPoint {
 
 	}
 
-	// TODO - get/set metoder
 	public int getTime() {
 		
 		return time;
@@ -65,13 +63,11 @@ public class GPSPoint {
 	}
 	
 	public String toString() {
-		
-		// TODO - start
+	
 		String str = Integer.toString(time) + " (" + Double.toString(latitude) + "," 
 		+ Double.toString(longitude) + ") " + Double.toString(elevation);
 		
 		return str;
-		// TODO - slutt
 		
 	}
 }
