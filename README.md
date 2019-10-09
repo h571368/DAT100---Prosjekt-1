@@ -1,2 +1,5 @@
-# dat100-prosjekt-startkode-2019
-Startkode for programmeringsprosjekt.
+# DAT100 Prosjekt1
+Programmeringsprosjekt i DAT100. 
+
+Medlemmer:
+
