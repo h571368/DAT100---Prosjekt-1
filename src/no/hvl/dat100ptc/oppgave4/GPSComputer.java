@@ -26,16 +26,19 @@ public class GPSComputer {
 		return this.gpspoints;
 	}
 	
-	// beregn total distances (i meter)
 	public double totalDistance() {
+		
+		
+		
+		int i = 0;
+		
+		while(i <=) {
+			
+		}
 
-		double distance = 0;
+		//throw new UnsupportedOperationException(TODO.method());
 
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		
 
 	}
 
