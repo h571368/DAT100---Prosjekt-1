@@ -72,24 +72,34 @@ public class GPSUtils {
 		latitude2 = gpspoint2.getLatitude();
 		longitude2 = gpspoint2.getLongitude();
 		
+		latitude1 = Math.toRadians(latitude1);
+		latitude2 = Math.toRadians(latitude2);
+		
+		
 		dlon = longitude2 - longitude1;
+		dlon = Math.toRadians(dlon);
 		dlat = latitude2 - latitude1;
+		//dlat = Math.toRadians(dlat);
 		a = pow(sin(dlat/2),2)+ cos(latitude1) * cos(latitude2) * pow(sin(dlon/2),2);
 		c = 2 * atan2( sqrt(a), sqrt(1-a) );
 		d = R * c;
 		
-		return d;
+		
+	    return d;
 
 	}
+	
+
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		double secs = 10;
+		int secs = 10;
 		double speed, distance;
 
-		distance = distance(gpspoint1,gpspoint2);
-		
+		distance = distance(gpspoint1, gpspoint2);
+		 
 		speed = distance/secs;
+		speed = speed * 3.6;
 		
 		return speed;
 
