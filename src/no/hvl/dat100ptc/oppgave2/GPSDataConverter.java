@@ -15,6 +15,7 @@ public class GPSDataConverter {
 	public static int toSeconds(String timestr) {
 		
 		int secs, hr, min, sec;
+	
 		
 		String deling = timestr.split("T")[1];
 		deling = deling.replace("Z", "");
