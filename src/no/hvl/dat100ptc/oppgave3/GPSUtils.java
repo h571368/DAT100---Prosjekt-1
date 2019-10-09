@@ -8,7 +8,6 @@ public class GPSUtils {
 	public static double findMax(double[] da) {
 
 		double max; 
-		
 		max = da[0];
 		
 		for (double d : da) {
@@ -16,7 +15,6 @@ public class GPSUtils {
 				max = d;
 			}
 		}
-		
 		return max;
 	}
 
@@ -37,26 +35,26 @@ public class GPSUtils {
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
 		double[] latitudes = new double[gpspoints.length];
+		
 		int i = 0;
-		while(i < gpspoints.length) {
+		while(i <= gpspoints.length-1) {
 		latitudes[i] = gpspoints[i].getLatitude();
+		i++;
 		}
 		
 		return latitudes;
-	
 	}
 
 	public static double[] getLongitudes(GPSPoint[] gpspoints) {
 
 		double[] longitudes = new double[gpspoints.length];
 		int i = 0;
-		while(i < gpspoints.length) {
-		longitudes[i] = gpspoints[i].getLongitude();
-		}
 		
+		while(i <= gpspoints.length-1) {
+		longitudes[i] = gpspoints[i].getLongitude();
+		i++;
+		}
 		return longitudes;
-
-
 	}
 
 	private static int R = 6371000; // jordens radius
@@ -72,24 +70,31 @@ public class GPSUtils {
 		latitude2 = gpspoint2.getLatitude();
 		longitude2 = gpspoint2.getLongitude();
 		
+		latitude1 = Math.toRadians(latitude1);
+		latitude2 = Math.toRadians(latitude2);
+		
+		
 		dlon = longitude2 - longitude1;
+		dlon = Math.toRadians(dlon);
 		dlat = latitude2 - latitude1;
 		a = pow(sin(dlat/2),2)+ cos(latitude1) * cos(latitude2) * pow(sin(dlon/2),2);
 		c = 2 * atan2( sqrt(a), sqrt(1-a) );
 		d = R * c;
 		
-		return d;
-
+	    return d;
 	}
+	
+
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		double secs = 10;
+		int secs = 10;
 		double speed, distance;
 
-		distance = distance(gpspoint1,gpspoint2);
-		
+		distance = distance(gpspoint1, gpspoint2);
+		 
 		speed = distance/secs;
+		speed = speed * 3.6;
 		
 		return speed;
 
