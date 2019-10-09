@@ -37,9 +37,11 @@ public class GPSUtils {
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
 		double[] latitudes = new double[gpspoints.length];
+		
 		int i = 0;
-		while(i < gpspoints.length) {
+		while(i <= gpspoints.length-1) {
 		latitudes[i] = gpspoints[i].getLatitude();
+		i++;
 		}
 		
 		return latitudes;
@@ -50,8 +52,10 @@ public class GPSUtils {
 
 		double[] longitudes = new double[gpspoints.length];
 		int i = 0;
-		while(i < gpspoints.length) {
+		
+		while(i <= gpspoints.length-1) {
 		longitudes[i] = gpspoints[i].getLongitude();
+		i++;
 		}
 		
 		return longitudes;
