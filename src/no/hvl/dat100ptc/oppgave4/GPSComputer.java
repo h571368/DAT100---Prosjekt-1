@@ -171,22 +171,26 @@ public class GPSComputer {
 
 		double totalkcal = 0;
 		
-		
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return totalkcal;
 
 		
 	}
 	
 	private static double WEIGHT = 80.0;
+	private static double KM = 1000;
 	
 	public void displayStatistics() {
 
+		
 		System.out.println("==============================================");
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
+		System.out.println("Total time			:	" + GPSUtils.formatTime(totalTime()));
+		System.out.println("Total distance  	:	" + GPSUtils.formatDouble((totalDistance()/KM))+" km");
+		System.out.println("Total elevation 	:	" + GPSUtils.formatDouble(totalElevation())+" m");
+		System.out.println("Max speed       	:	" + GPSUtils.formatDouble(maxSpeed())+" km/t");
+		System.out.println("Average speed   	:	" + GPSUtils.formatDouble(averageSpeed())+" km/t");
+		System.out.println("Energy          	:	" + GPSUtils.formatDouble(totalKcal(WEIGHT)) +" kcal");
+		System.out.println("==============================================");
+		
 		
 		// TODO - SLUTT
 		
