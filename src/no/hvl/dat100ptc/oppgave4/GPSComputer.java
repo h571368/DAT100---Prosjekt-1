@@ -191,7 +191,7 @@ GPSPoint[] GPSMaxSpeed = getGPSPoints();
 		else if (fart < 16) {
 			kcal = 4 * vekt * sekunder/3600;
 		}
-
+		
 		return kcal;
 		
 	}
