@@ -39,33 +39,26 @@ public class ShowProfile extends EasyGraphics {
 		makeWindow("Height profile", 2 * MARGIN + 3 * N, 2 * MARGIN + MAXBARHEIGHT);
 
 		// top margin + height of drawing area
-		showHeightProfile(MARGIN + MAXBARHEIGHT); 
+		showHeightProfile(MARGIN + MAXBARHEIGHT, N); 
 	}
 
-	public void showHeightProfile(int ybase) {
+	public void showHeightProfile(int ybase, int N) {
 		
 		// TODO - START
 
-		//throw new UnsupportedOperationException(TODO.method());
-		int arrayLength = gpspoints.length;
-		if (arrayLength > 500) {
-			arrayLength = 500;
-			System.out.println("Length of array is bigger than 500, and too big to show.");
-		}
-
-
-		for (int i = 0; i < arrayLength; i++){
+		for (int i = 0; i < N; i++){
 
 			GPSPoint point = gpspoints[i];
 			double height = point.getElevation();
 
 			if (height < 0) {height = 0;}
 
-			int startEndPointX = MARGIN + i;
+			int space = 0;
+			int startEndPointX = MARGIN + space;
 			int startPointY = ybase - (int) height;
-			int endPointY = MARGIN + MAXBARHEIGHT;
+			space += 2;
 
-		drawLine(startEndPointX, startPointY, startEndPointX, endPointY);
+		drawLine(startEndPointX, startPointY, startEndPointX, ybase);
 		}
 	
 		// TODO - SLUTT
