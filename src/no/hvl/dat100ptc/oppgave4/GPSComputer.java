@@ -28,37 +28,72 @@ public class GPSComputer {
 	
 	public double totalDistance() {
 		
-		
-		
-		int i = 0;
-		
-		while(i <=) {
+	
+			GPSPoint[] GPSTotalDistance = getGPSPoints();
 			
+			double distance = 0;
+			int i = 1;
+			while(i <= GPSTotalDistance.length-1) {
+			GPSPoint A = GPSTotalDistance[i-1];
+			GPSPoint B = GPSTotalDistance[i];	
+			distance += GPSUtils.distance(A, B);
+			i++;
+			}
+			return distance;
 		}
 
 		//throw new UnsupportedOperationException(TODO.method());
 
-		
-
-	}
-
+	
 	// beregn totale høydemeter (i meter)
 	public double totalElevation() {
 
-		double elevation = 0;
+		double totelevation = 0;
 
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
-
+		GPSPoint[] GPSTotalElevation = getGPSPoints();
+		
+		int i = 1;
+		while(i <= GPSTotalElevation.length-1) {
+		GPSPoint A = GPSTotalElevation[i-1];
+		GPSPoint B = GPSTotalElevation[i];
+		
+		if (i == 1 && A.getElevation()>=0) {
+			totelevation = A.getElevation();
+		}
+		
+		if (A.getElevation() < B.getElevation() && B.getElevation()>0) {
+		totelevation =+ B.getElevation();
+		}
+		
+		i++;
+		}
+		return totelevation;
 	}
+
+	
 
 	// beregn total tiden for hele turen (i sekunder)
 	public int totalTime() {
 
-		throw new UnsupportedOperationException(TODO.method());
+		int totaltime = 0;
+		
+		GPSPoint[] GPSTotalTime = getGPSPoints();
+		
+		int i = 1;
+		while(i <= GPSTotalTime.length-1) {
+		GPSPoint A = GPSTotalTime[i-1];
+		GPSPoint B = GPSTotalTime[i];
+		
+		if (i == 1 ) {
+			totaltime = A.getTime();
+		}
+		totaltime =+ B.getTime();
+		i++;
+		}
+		
+		
+		
+		return totaltime;
 
 	}
 		
