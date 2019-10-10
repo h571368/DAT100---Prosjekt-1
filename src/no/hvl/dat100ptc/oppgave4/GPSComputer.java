@@ -66,15 +66,12 @@ public class GPSComputer {
 	public int totalTime() {
 
 		int totaltime = 0;
-		
-		int i = 0;
-		while(i <= gpspoints.length-1) {
-		GPSPoint A = gpspoints[gpspoints.length-1];
-		totaltime =+ A.getTime();
+		int i = 1;
+		while(i < gpspoints.length) {
+		totaltime += gpspoints[i].getTime()-gpspoints[i-1].getTime();
 		i++;
 		}
 		return totaltime;
-
 	}
 		
 
