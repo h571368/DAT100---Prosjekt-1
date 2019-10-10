@@ -179,7 +179,8 @@ public class GPSComputer {
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
-
+		
+		
 		
 		throw new UnsupportedOperationException(TODO.method());
 
