@@ -124,6 +124,8 @@ public class GPSComputer {
 	    while(i<speeds.length) {
 	    	average += speeds[i];
 	    	i++;
+	    	
+	    	
 	    }
 	    
 	    average = average/(speeds.length-1);
