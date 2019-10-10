@@ -9,7 +9,7 @@ import no.hvl.dat100ptc.oppgave3.GPSUtils;
 
 public class GPSComputer {
 	
-	private GPSPoint[] gpspoints;
+	private GPSPoint[] gpspoints = getGPSPoints();
 	
 	public GPSComputer(String filename) {
 
@@ -27,62 +27,90 @@ public class GPSComputer {
 	}
 	
 	public double totalDistance() {
-		
-		
-		
-		int i = 0;
-		
-		while(i <=) {
-			
+	
+		double distance = 0;
+		int i = 1;
+		while(i <= gpspoints.length-1) {
+		GPSPoint A = gpspoints[i-1];
+		GPSPoint B = gpspoints[i];	
+		distance += GPSUtils.distance(A, B);
+		i++;
 		}
-
-		//throw new UnsupportedOperationException(TODO.method());
-
-		
-
-	}
-
-	// beregn totale høydemeter (i meter)
+		return distance;
+		}
+	
+	
 	public double totalElevation() {
 
-		double elevation = 0;
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
-
+		double totelevation = 0;
+		
+		int i = 1;
+		while(i <= gpspoints.length-1) {
+		GPSPoint A = gpspoints[i-1];
+		GPSPoint B = gpspoints[i];
+		
+		if (i == 1 && A.getElevation()>=0) {
+			totelevation = A.getElevation();
+		}
+		
+		if (A.getElevation() < B.getElevation() && B.getElevation()>0) {
+		totelevation =+ B.getElevation();
+		}
+		
+		i++;
+		}
+		return totelevation;
 	}
 
-	// beregn total tiden for hele turen (i sekunder)
+	
 	public int totalTime() {
 
-		throw new UnsupportedOperationException(TODO.method());
-
+		int totaltime = 0;
+		int i = 1;
+		while(i < gpspoints.length) {
+		totaltime += gpspoints[i].getTime()-gpspoints[i-1].getTime();
+		i++;
+		}
+		return totaltime;
 	}
 		
-	// beregn gjennomsnitshastighets mellom hver av gps punktene
 
 	public double[] speeds() {
 		
-		// TODO - START		// OPPGAVE - START
+		double speed = 0;
+		double[] speeds = new double[gpspoints.length-1];
+			
+		int i = 1;
+		while(i <= gpspoints.length-1) {
 		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		GPSPoint A = gpspoints[i-1];
+		GPSPoint B = gpspoints[i];
+		
+		speed = GPSUtils.speed(A,B);
+		speeds[i-1] = speed;
+		i++;
+		}
+		
+		return speeds;
 
 	}
 	
 	public double maxSpeed() {
 		
 		double maxspeed = 0;
+		double[] allSpeeds = speeds();
 		
-		// TODO - START
+		int i = 0;
+		while(i < allSpeeds.length) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if (allSpeeds[i] > maxspeed) {
+		maxspeed = allSpeeds[i];
+		}
 		
-		// TODO - SLUTT
+		i++;
+		
+		}
+		return maxspeed;
 		
 	}
 
@@ -90,57 +118,76 @@ public class GPSComputer {
 
 		double average = 0;
 		
-		// TODO - START
+		double[] allspeeds = speeds();
 		
-		throw new UnsupportedOperationException(TODO.method());
+		double sum = 0;
+	    for (double value : allspeeds) {
+	        sum += value;
+	    }
+	    average = sum/allspeeds.length;
 		
-		// TODO - SLUTT
+		
+		/*GPSPoint[] GPSspeeds = getGPSPoints();
+		double speed = 0;
+			
+		int i = 1;
+		while(i <= GPSspeeds.length-1) {
+		
+		GPSPoint A = GPSspeeds[i-1];
+		GPSPoint B = GPSspeeds[i];
+		
+		speed = GPSUtils.speed(A,B);
+		average += speed;
+		i++;
+		}
+		
+		average /= GPSspeeds.length-1;*/
+		
+		return average;
 		
 	}
-
-	/*
-	 * bicycling, <10 mph, leisure, to work or for pleasure 4.0 bicycling,
-	 * general 8.0 bicycling, 10-11.9 mph, leisure, slow, light effort 6.0
-	 * bicycling, 12-13.9 mph, leisure, moderate effort 8.0 bicycling, 14-15.9
-	 * mph, racing or leisure, fast, vigorous effort 10.0 bicycling, 16-19 mph,
-	 * racing/not drafting or >19 mph drafting, very fast, racing general 12.0
-	 * bicycling, >20 mph, racing, not drafting 16.0
-	 */
-
 	// conversion factor m/s to miles per hour
 	public static double MS = 2.236936;
 
 	// beregn kcal gitt weight og tid der kjøres med en gitt hastighet
 	public double kcal(double weight, int secs, double speed) {
 		
+		double fart = speed/0.62;
+		double vekt = weight;
+		int sekunder = secs;
+		double kcal = 0;
 		
-		double hour = secs/3600;
-		double kcal = 1;
-		double met = kcal/weight*hour;	
-		double forbrent = 0;
+		if (fart >= 32) {
+			kcal = 16 * vekt * sekunder/3600;
+		}
+		else if (fart >= 26) {
+			kcal = 12 * vekt * sekunder/3600;
+		}
+		else if (fart >= 22.5) {
+			kcal = 10 * vekt * sekunder/3600;
+		}
+		else if (fart >= 19) {
+			kcal = 8 * vekt * sekunder/3600;
+		}
+		else if (fart >= 16) {
+			kcal = 6 * vekt * sekunder/3600;
+		}
+		else if (fart < 16) {
+			kcal = 4 * vekt * sekunder/3600;
+		}
 		
-
-		// MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
-		
-		double speedmph = speed * MS;
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		return kcal;
 		
 	}
 
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
-
-		// TODO - START
+		
+		
 		
 		throw new UnsupportedOperationException(TODO.method());
 
-		// TODO - SLUTT
 		
 	}
 	
