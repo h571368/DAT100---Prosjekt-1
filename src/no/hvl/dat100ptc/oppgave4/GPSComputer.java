@@ -117,18 +117,18 @@ public class GPSComputer {
 	public double averageSpeed() {
 
 		double average = 0;
-		
+		double dist = 0;
+		double time = 0;
 		double[] speeds = speeds();
 		
 		int i = 0;
 	    while(i<speeds.length) {
 	    	average += speeds[i];
 	    	i++;
-	    	
-	    	
 	    }
-	    
-	    average = average/(speeds.length-1);
+	    dist = totalDistance();
+	    time = totalTime();
+	    average = (dist/time)*3.6;
 	    
 		return average;
 		
