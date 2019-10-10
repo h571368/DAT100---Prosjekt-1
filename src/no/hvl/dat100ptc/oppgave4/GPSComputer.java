@@ -93,17 +93,29 @@ public class GPSComputer {
 
 	public double[] speeds() {
 		
-		// TODO - START		// OPPGAVE - START
+		GPSPoint[] GPSspeeds = getGPSPoints();
+		double speed = 0;
+		double[] speeds = new double[GPSspeeds.length-1];
+			
+		int i = 1;
+		while(i <= GPSspeeds.length-1) {
 		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		GPSPoint A = GPSspeeds[i-1];
+		GPSPoint B = GPSspeeds[i];
+		
+		speed = GPSUtils.speed(A,B);
+		speeds[i-1] = speed;
+		i++;
+		}
+		
+		return speeds;
 
 	}
 	
 	public double maxSpeed() {
 		
 		double maxspeed = 0;
+		double[] allSpeeds = speeds();
 		
 		GPSPoint[] GPSMaxSpeed = getGPSPoints();
 		
