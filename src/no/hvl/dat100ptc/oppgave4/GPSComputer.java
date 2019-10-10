@@ -9,7 +9,7 @@ import no.hvl.dat100ptc.oppgave3.GPSUtils;
 
 public class GPSComputer {
 	
-	private GPSPoint[] gpspoints;
+	private GPSPoint[] gpspoints = getGPSPoints();
 	
 	public GPSComputer(String filename) {
 
@@ -27,35 +27,27 @@ public class GPSComputer {
 	}
 	
 	public double totalDistance() {
-		
 	
-			GPSPoint[] GPSTotalDistance = getGPSPoints();
-			
-			double distance = 0;
-			int i = 1;
-			while(i <= GPSTotalDistance.length-1) {
-			GPSPoint A = GPSTotalDistance[i-1];
-			GPSPoint B = GPSTotalDistance[i];	
-			distance += GPSUtils.distance(A, B);
-			i++;
-			}
-			return distance;
+		double distance = 0;
+		int i = 1;
+		while(i <= gpspoints.length-1) {
+		GPSPoint A = gpspoints[i-1];
+		GPSPoint B = gpspoints[i];	
+		distance += GPSUtils.distance(A, B);
+		i++;
 		}
-
-		//throw new UnsupportedOperationException(TODO.method());
-
+		return distance;
+		}
 	
-	// beregn totale høydemeter (i meter)
+	
 	public double totalElevation() {
 
 		double totelevation = 0;
-
-		GPSPoint[] GPSTotalElevation = getGPSPoints();
 		
 		int i = 1;
-		while(i <= GPSTotalElevation.length-1) {
-		GPSPoint A = GPSTotalElevation[i-1];
-		GPSPoint B = GPSTotalElevation[i];
+		while(i <= gpspoints.length-1) {
+		GPSPoint A = gpspoints[i-1];
+		GPSPoint B = gpspoints[i];
 		
 		if (i == 1 && A.getElevation()>=0) {
 			totelevation = A.getElevation();
@@ -71,17 +63,13 @@ public class GPSComputer {
 	}
 
 	
-
-	// beregn total tiden for hele turen (i sekunder)
 	public int totalTime() {
 
 		int totaltime = 0;
 		
-		GPSPoint[] GPSTotalTime = getGPSPoints();
-		
 		int i = 0;
-		while(i <= GPSTotalTime.length-1) {
-		GPSPoint A = GPSTotalTime[GPSTotalTime.length-1];
+		while(i <= gpspoints.length-1) {
+		GPSPoint A = gpspoints[gpspoints.length-1];
 		totaltime =+ A.getTime();
 		i++;
 		}
@@ -89,19 +77,17 @@ public class GPSComputer {
 
 	}
 		
-	// beregn gjennomsnitshastighets mellom hver av gps punktene
 
 	public double[] speeds() {
 		
-		GPSPoint[] GPSspeeds = getGPSPoints();
 		double speed = 0;
-		double[] speeds = new double[GPSspeeds.length-1];
+		double[] speeds = new double[gpspoints.length-1];
 			
 		int i = 1;
-		while(i <= GPSspeeds.length-1) {
+		while(i <= gpspoints.length-1) {
 		
-		GPSPoint A = GPSspeeds[i-1];
-		GPSPoint B = GPSspeeds[i];
+		GPSPoint A = gpspoints[i-1];
+		GPSPoint B = gpspoints[i];
 		
 		speed = GPSUtils.speed(A,B);
 		speeds[i-1] = speed;
@@ -117,15 +103,11 @@ public class GPSComputer {
 		double maxspeed = 0;
 		double[] allSpeeds = speeds();
 		
-		GPSPoint[] GPSMaxSpeed = getGPSPoints();
+		int i = 0;
+		while(i < allSpeeds.length) {
 		
-		int i = 1;
-		while(i <= GPSMaxSpeed.length-1) {
-		GPSPoint A = GPSMaxSpeed[i-1];
-		GPSPoint B = GPSMaxSpeed[i];
-		
-		if (GPSUtils.speed(A,B) > maxspeed) {
-		maxspeed = GPSUtils.speed(A,B);
+		if (allSpeeds[i] > maxspeed) {
+		maxspeed = allSpeeds[i];
 		}
 		
 		i++;
@@ -139,29 +121,34 @@ public class GPSComputer {
 
 		double average = 0;
 		
-GPSPoint[] GPSMaxSpeed = getGPSPoints();
+		double[] allspeeds = speeds();
 		
+		double sum = 0;
+	    for (double value : allspeeds) {
+	        sum += value;
+	    }
+	    average = sum/allspeeds.length;
+		
+		
+		/*GPSPoint[] GPSspeeds = getGPSPoints();
+		double speed = 0;
+			
 		int i = 1;
-		while(i <= GPSMaxSpeed.length-1) {
-		GPSPoint A = GPSMaxSpeed[i-1];
-		GPSPoint B = GPSMaxSpeed[i];
-		average =+ GPSUtils.speed(A,B);
+		while(i <= GPSspeeds.length-1) {
+		
+		GPSPoint A = GPSspeeds[i-1];
+		GPSPoint B = GPSspeeds[i];
+		
+		speed = GPSUtils.speed(A,B);
+		average += speed;
 		i++;
 		}
-		average = average/GPSMaxSpeed.length;
+		
+		average /= GPSspeeds.length-1;*/
+		
 		return average;
 		
 	}
-
-	/*
-	 * bicycling, <10 mph, leisure, to work or for pleasure 4.0 bicycling,
-	 * general 8.0 bicycling, 10-11.9 mph, leisure, slow, light effort 6.0
-	 * bicycling, 12-13.9 mph, leisure, moderate effort 8.0 bicycling, 14-15.9
-	 * mph, racing or leisure, fast, vigorous effort 10.0 bicycling, 16-19 mph,
-	 * racing/not drafting or >19 mph drafting, very fast, racing general 12.0
-	 * bicycling, >20 mph, racing, not drafting 16.0
-	 */
-
 	// conversion factor m/s to miles per hour
 	public static double MS = 2.236936;
 
