@@ -79,20 +79,12 @@ public class GPSComputer {
 		
 		GPSPoint[] GPSTotalTime = getGPSPoints();
 		
-		int i = 1;
+		int i = 0;
 		while(i <= GPSTotalTime.length-1) {
-		GPSPoint A = GPSTotalTime[i-1];
-		GPSPoint B = GPSTotalTime[i];
-		
-		if (i == 1 ) {
-			totaltime = A.getTime();
-		}
-		totaltime =+ B.getTime();
+		GPSPoint A = GPSTotalTime[GPSTotalTime.length-1];
+		totaltime =+ A.getTime();
 		i++;
 		}
-		
-		
-		
 		return totaltime;
 
 	}
@@ -113,11 +105,21 @@ public class GPSComputer {
 		
 		double maxspeed = 0;
 		
-		// TODO - START
+		GPSPoint[] GPSMaxSpeed = getGPSPoints();
 		
-		throw new UnsupportedOperationException(TODO.method());
+		int i = 1;
+		while(i <= GPSMaxSpeed.length-1) {
+		GPSPoint A = GPSMaxSpeed[i-1];
+		GPSPoint B = GPSMaxSpeed[i];
 		
-		// TODO - SLUTT
+		if (GPSUtils.speed(A,B) > maxspeed) {
+		maxspeed = GPSUtils.speed(A,B);
+		}
+		
+		i++;
+		
+		}
+		return maxspeed;
 		
 	}
 
@@ -125,11 +127,17 @@ public class GPSComputer {
 
 		double average = 0;
 		
-		// TODO - START
+GPSPoint[] GPSMaxSpeed = getGPSPoints();
 		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - SLUTT
+		int i = 1;
+		while(i <= GPSMaxSpeed.length-1) {
+		GPSPoint A = GPSMaxSpeed[i-1];
+		GPSPoint B = GPSMaxSpeed[i];
+		average =+ GPSUtils.speed(A,B);
+		i++;
+		}
+		average = average/GPSMaxSpeed.length;
+		return average;
 		
 	}
 
