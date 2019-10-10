@@ -59,6 +59,8 @@ public class ShowProfile extends EasyGraphics {
 			GPSPoint point = gpspoints[i];
 			double height = point.getElevation();
 
+			if (height < 0) {height = 0;}
+
 			int startEndPointX = MARGIN + i;
 			int startPointY = ybase - (int) height;
 			int endPointY = MARGIN + MAXBARHEIGHT;
