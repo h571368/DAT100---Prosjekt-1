@@ -148,22 +148,31 @@ public class GPSComputer {
 	// beregn kcal gitt weight og tid der kjøres med en gitt hastighet
 	public double kcal(double weight, int secs, double speed) {
 		
+		double fart = speed/0.62;
+		double vekt = weight;
+		int sekunder = secs;
+		double kcal = 0;
 		
-		double hour = secs/3600;
-		double kcal = 1;
-		double met = kcal/weight*hour;	
-		double forbrent = 0;
-		
+		if (fart >= 32) {
+			kcal = 16 * vekt * sekunder/3600;
+		}
+		else if (fart >= 26) {
+			kcal = 12 * vekt * sekunder/3600;
+		}
+		else if (fart >= 22.5) {
+			kcal = 10 * vekt * sekunder/3600;
+		}
+		else if (fart >= 19) {
+			kcal = 8 * vekt * sekunder/3600;
+		}
+		else if (fart >= 16) {
+			kcal = 6 * vekt * sekunder/3600;
+		}
+		else if (fart < 16) {
+			kcal = 4 * vekt * sekunder/3600;
+		}
 
-		// MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
-		
-		double speedmph = speed * MS;
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		return kcal;
 		
 	}
 
@@ -171,11 +180,9 @@ public class GPSComputer {
 
 		double totalkcal = 0;
 
-		// TODO - START
 		
 		throw new UnsupportedOperationException(TODO.method());
 
-		// TODO - SLUTT
 		
 	}
 	
