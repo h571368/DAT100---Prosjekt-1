@@ -81,7 +81,7 @@ public class GPSComputer {
 		double[] speeds = new double[gpspoints.length-1];
 			
 		int i = 1;
-		while(i <= gpspoints.length-1) {
+		while(i < gpspoints.length) {
 		
 		GPSPoint A = gpspoints[i-1];
 		GPSPoint B = gpspoints[i];
@@ -118,31 +118,16 @@ public class GPSComputer {
 
 		double average = 0;
 		
-		double[] allspeeds = speeds();
+		double[] speeds = speeds();
 		
-		double sum = 0;
-	    for (double value : allspeeds) {
-	        sum += value;
+		int i = 0;
+	    while(i<speeds.length) {
+	    	average += speeds[i];
+	    	i++;
 	    }
-	    average = sum/allspeeds.length;
-		
-		
-		/*GPSPoint[] GPSspeeds = getGPSPoints();
-		double speed = 0;
-			
-		int i = 1;
-		while(i <= GPSspeeds.length-1) {
-		
-		GPSPoint A = GPSspeeds[i-1];
-		GPSPoint B = GPSspeeds[i];
-		
-		speed = GPSUtils.speed(A,B);
-		average += speed;
-		i++;
-		}
-		
-		average /= GPSspeeds.length-1;*/
-		
+	    
+	    average = average/(speeds.length-1);
+	    
 		return average;
 		
 	}
