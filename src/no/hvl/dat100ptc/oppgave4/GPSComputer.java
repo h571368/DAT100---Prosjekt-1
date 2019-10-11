@@ -140,35 +140,6 @@ public class GPSComputer {
 		
 		
 		return kcal;
-		
-		//THOMAS
-		/*double fart = speed * MS;
-		double vekt = weight;
-		int sekunder = secs;
-		double kcal = 0;
-		
-		if (fart >= 32) {
-			kcal = 16 * vekt * sekunder/3600;
-		}
-		else if (fart >= 26) {
-			kcal = 12 * vekt * sekunder/3600;
-		}
-		else if (fart >= 22.5) {
-			kcal = 10 * vekt * sekunder/3600;
-		}
-		else if (fart >= 19) {
-			kcal = 8 * vekt * sekunder/3600;
-		}
-		else if (fart >= 16) {
-			kcal = 6 * vekt * sekunder/3600;
-		}
-		else if (fart < 16) {
-			kcal = 4 * vekt * sekunder/3600;
-		}
-		return kcal;
-		*/
-		
-		
 	}
 
 	public double totalKcal(double weight) {
