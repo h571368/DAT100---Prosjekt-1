@@ -44,12 +44,12 @@ public class GPSComputer {
 
 		
 		double totalElevation = 0;
-		double[] Elevation = GPSUtils.getElevations(gpspoints);
+		double[] Elevations = GPSUtils.getElevations(gpspoints);
 		
 		int i = 1;
 		while(i <= gpspoints.length-1) {
 			
-		double deltaElevation = Elevation[i] - Elevation[i-1];
+		double deltaElevation = Elevations[i] - Elevations[i-1];
 		
 		if (deltaElevation > 0) {
 			totalElevation += deltaElevation;
