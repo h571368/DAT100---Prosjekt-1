@@ -143,6 +143,7 @@ public class GPSUtils { // Tror kommafeil i test_printDouble kommer fra språkdif
 		while (buf.length() < TEXTWIDTH) {
 		  buf.insert(0, ' ');
 		}
+		
 		return buf.toString();
 	}
 }
