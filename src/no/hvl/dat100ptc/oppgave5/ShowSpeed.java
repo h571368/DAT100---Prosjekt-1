@@ -34,7 +34,7 @@ public class ShowSpeed extends EasyGraphics {
 
 	public void run() {
 
-		int N = gpspoints.length-1; // number of data points
+		int N = gpspoints.length-1; // number of data points // Why -1?
 		
 		makeWindow("Speed profile", 2*MARGIN + 2 * N, 2 * MARGIN + BARHEIGHT);
 		
@@ -47,9 +47,21 @@ public class ShowSpeed extends EasyGraphics {
 		int timescaling = Integer.parseInt(getText("Tidsskalering"));
 				
 		// TODO - START
+
+		int space = 0;
 		
-		throw new UnsupportedOperationException(TODO.method());
-	
+		for (int i = 0; i < N; i++){
+			double[] speedArray = GPSComputer.speeds();
+			double velocity = speedArray[i];
+
+			if (velocity < 0) {velocity = 0;}
+
+			int startEndPointX = MARGIN + space;
+			int startPointY = ybase - (int) velocity;
+			space += 2;
+
+			drawLine(startEndPointX, startPointY, startEndPointX, ybase);
+		}
 		// TODO - SLUTT
 	}
 }

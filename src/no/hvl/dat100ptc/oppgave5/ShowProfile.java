@@ -46,6 +46,8 @@ public class ShowProfile extends EasyGraphics {
 		
 		// TODO - START
 
+		int space = 0;
+		
 		for (int i = 0; i < N; i++){
 
 			GPSPoint point = gpspoints[i];
@@ -53,7 +55,6 @@ public class ShowProfile extends EasyGraphics {
 
 			if (height < 0) {height = 0;}
 
-			int space = 0;
 			int startEndPointX = MARGIN + space;
 			int startPointY = ybase - (int) height;
 			space += 2;
