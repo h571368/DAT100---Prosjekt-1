@@ -10,6 +10,15 @@ import no.hvl.dat100ptc.oppgave4.GPSComputer;
 
 public class ShowRoute extends EasyGraphics {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static int[] times;
+	private static double[] latitudes;
+	private static double[] longitudes;
+	private static double[] elevations;
+	
 	private static int MARGIN = 50;
 	private static int MAPXSIZE = 800;
 	private static int MAPYSIZE = 800;
@@ -23,7 +32,11 @@ public class ShowRoute extends EasyGraphics {
 		gpscomputer = new GPSComputer(filename);
 
 		gpspoints = gpscomputer.getGPSPoints();
-
+		
+		times = GPSUtils.getTimes(gpspoints);
+		latitudes = GPSUtils.getLatitudes(gpspoints);
+		longitudes = GPSUtils.getLongitudes(gpspoints);
+		elevations = GPSUtils.getElevations(gpspoints);
 	}
 
 	public static void main(String[] args) {
@@ -44,8 +57,8 @@ public class ShowRoute extends EasyGraphics {
 	// antall x-pixels per lengdegrad
 	public double xstep() {
 
-		double maxlon = GPSUtils.findMax(GPSUtils.getLongitudes(gpspoints));
-		double minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
+		double maxlon = GPSUtils.findMax(longitudes);
+		double minlon = GPSUtils.findMin(longitudes);
 
 		double xstep = MAPXSIZE / (Math.abs(maxlon - minlon)); 
 
@@ -54,24 +67,30 @@ public class ShowRoute extends EasyGraphics {
 
 	// antall y-pixels per breddegrad
 	public double ystep() {
-	
-		double ystep;
 		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
+		double maxlat = GPSUtils.findMax(latitudes);
+		double minlat = GPSUtils.findMin(latitudes);
 
-		// TODO - SLUTT
+		double ystep = MAPXSIZE / (Math.abs(maxlat - minlat)); 
 		
+		return ystep;
 	}
 
 	public void showRouteMap(int ybase) {
 
-		// TODO - START
+		double xstep = xstep();
+		double ystep = ystep();
+
+		double minlon = GPSUtils.findMin(longitudes);
+		double minlat = GPSUtils.findMin(latitudes);
 		
-		throw new UnsupportedOperationException(TODO.method());
+		setColor(0, 255, 0); // green
 		
-		// TODO - SLUTT
+		int lastX = 0;
+		int lastY = 0;
+		
+
+		
 	}
 
 	public void showStatistics() {
@@ -81,12 +100,10 @@ public class ShowRoute extends EasyGraphics {
 		setColor(0,0,0);
 		setFont("Courier",12);
 		
-		// TODO - START
+		gpscomputer.displayStatistics();
 		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - SLUTT;
-	}
+		}
+	
 
 	public void playRoute(int ybase) {
 
