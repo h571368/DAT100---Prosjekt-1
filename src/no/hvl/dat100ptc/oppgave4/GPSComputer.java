@@ -111,12 +111,38 @@ public class GPSComputer {
 		
 	}
 	// conversion factor m/s to miles per hour
-	public static double MS = 0.62;
+	public static double MS = 2.23693629;
 
 	// beregn kcal gitt weight og tid der kjøres med en gitt hastighet
 	public double kcal(double weight, int secs, double speed) {
 		
-		double fart = speed * MS;
+		double kcal = 0;
+		
+		double met = 0;
+		double speedmph = speed * MS;
+		
+		
+		double [] Speeds = new double[] {
+				0, 10, 12,  14,  16, 20, Integer.MAX_VALUE
+		};
+		
+		double [] METs = new double[] {
+				0, 4.0, 6.0, 8.0, 10.0, 12.0, 16.0 
+		};
+		
+		for (int i = 0; i < Speeds.length; i++) {
+			if(speedmph >= Speeds[i]) {
+				met = METs[i + 1];
+			}
+		}
+		
+		kcal = met * weight * secs/ (60.0 * 60.0);
+		
+		
+		return kcal;
+		
+		//THOMAS
+		/*double fart = speed * MS;
 		double vekt = weight;
 		int sekunder = secs;
 		double kcal = 0;
@@ -139,18 +165,19 @@ public class GPSComputer {
 		else if (fart < 16) {
 			kcal = 4 * vekt * sekunder/3600;
 		}
-		
 		return kcal;
+		*/
+		
 		
 	}
 
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
-		double[] allSpeeds = speeds();
+		double[] Speeds = speeds();
 		
-		for	(int i = 0; i < allSpeeds.length; i++) {
-		totalkcal += kcal(weight, gpspoints[i+1].getTime() - gpspoints[i].getTime(), allSpeeds[i]);
+		for	(int i = 0; i < Speeds.length; i++) {
+		totalkcal += kcal(weight, (gpspoints[i+1].getTime() - gpspoints[i].getTime()), Speeds[i]);
 		}
 			
 		return totalkcal;
@@ -165,12 +192,14 @@ public class GPSComputer {
 
 		
 		System.out.println("==============================================");
+		
 		System.out.println("Total time		:	" + GPSUtils.formatTime(totalTime()));
 		System.out.println("Total distance  	:	" + GPSUtils.formatDouble((totalDistance()/1000))+" km");
 		System.out.println("Total elevation 	:	" + GPSUtils.formatDouble(totalElevation())+" m");
 		System.out.println("Max speed       	:	" + GPSUtils.formatDouble(maxSpeed())+" km/t");
 		System.out.println("Average speed   	:	" + GPSUtils.formatDouble(averageSpeed())+" km/t");
 		System.out.println("Energy          	:	" + GPSUtils.formatDouble(totalKcal(WEIGHT)) +" kcal");
+		
 		System.out.println("==============================================");
 		
 		
