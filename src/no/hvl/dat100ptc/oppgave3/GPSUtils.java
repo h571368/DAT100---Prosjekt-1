@@ -3,7 +3,7 @@ package no.hvl.dat100ptc.oppgave3;
 import static java.lang.Math.*;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
-public class GPSUtils {
+public class GPSUtils { // Tror kommafeil i test_printDouble kommer fra språkdiff. 
 
 	public static double findMax(double[] da) {
 
@@ -83,8 +83,6 @@ public class GPSUtils {
 		
 	    return d;
 	}
-	
-
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
@@ -140,14 +138,11 @@ public class GPSUtils {
 	public static String formatDouble(double d) {
 
 		String str = String.format("%.2f", d);
-
 		StringBuffer buf = new StringBuffer(str);
 
 		while (buf.length() < TEXTWIDTH) {
 		  buf.insert(0, ' ');
 		}
-		
 		return buf.toString();
-		
 	}
 }
