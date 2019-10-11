@@ -44,12 +44,12 @@ public class GPSComputer {
 
 		
 		double totalElevation = 0;
-		
+		double[] Elevation = GPSUtils.getElevations(gpspoints);
 		
 		int i = 1;
 		while(i <= gpspoints.length-1) {
 			
-		double deltaElevation = gpspoints[i].getElevation() - gpspoints[i-1].getElevation();
+		double deltaElevation = Elevation[i] - Elevation[i-1];
 		
 		if (deltaElevation > 0) {
 			totalElevation += deltaElevation;
@@ -64,10 +64,11 @@ public class GPSComputer {
 	
 	public int totalTime() {
 
+		int[] times = GPSUtils.getTimes(gpspoints);
 		int totaltime = 0;
 		int i = 1;
 		while(i < gpspoints.length) {
-		totaltime += gpspoints[i].getTime()-gpspoints[i-1].getTime();
+		totaltime += times[i]- times[i-1];
 		i++;
 		}
 		return totaltime;
@@ -81,9 +82,8 @@ public class GPSComputer {
 			
 		int i = 1;
 		while(i < gpspoints.length) {
-		
-		speed = GPSUtils.speed(gpspoints[i-1],gpspoints[i]);
-		speeds[i-1] = speed;
+			
+		speeds[i-1] = GPSUtils.speed(gpspoints[i-1],gpspoints[i]);
 		i++;
 		}
 		
@@ -175,9 +175,10 @@ public class GPSComputer {
 
 		double totalkcal = 0;
 		double[] Speeds = speeds();
+		int[] Times = GPSUtils.getTimes(gpspoints);
 		
 		for	(int i = 0; i < Speeds.length; i++) {
-		totalkcal += kcal(weight, (gpspoints[i+1].getTime() - gpspoints[i].getTime()), Speeds[i]);
+		totalkcal += kcal(weight, (Times[i+1] - Times[i]), Speeds[i]);
 		}
 			
 		return totalkcal;

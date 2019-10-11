@@ -56,6 +56,30 @@ public class GPSUtils { // Tror kommafeil i test_printDouble kommer fra språkdif
 		}
 		return longitudes;
 	}
+	
+	public static int[] getTimes(GPSPoint[] gpspoints) {
+
+		int[] times = new int[gpspoints.length];
+		int i = 0;
+		
+		while(i <= gpspoints.length-1) {
+		times[i] = gpspoints[i].getTime();
+		i++;
+		}
+		return times;
+	}
+	
+	public static double[] getElevations(GPSPoint[] gpspoints) {
+
+		double[] elevations = new double[gpspoints.length];
+		int i = 0;
+		
+		while(i <= gpspoints.length-1) {
+		elevations[i] = gpspoints[i].getElevation();
+		i++;
+		}
+		return elevations;
+	}
 
 	private static int R = 6371000; //jordens radius
 
