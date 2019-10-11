@@ -14,7 +14,9 @@ public class ShowRoute extends EasyGraphics {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private static int[] times;
+	private static double[] speeds;
 	private static double[] latitudes;
 	private static double[] longitudes;
 	private static double[] elevations;
@@ -33,6 +35,7 @@ public class ShowRoute extends EasyGraphics {
 
 		gpspoints = gpscomputer.getGPSPoints();
 		
+		speeds = gpscomputer.speeds();
 		times = GPSUtils.getTimes(gpspoints);
 		latitudes = GPSUtils.getLatitudes(gpspoints);
 		longitudes = GPSUtils.getLongitudes(gpspoints);

@@ -15,6 +15,8 @@ public class ShowSpeed extends EasyGraphics {
 	private static int MARGIN = 50;
 	private static int BARHEIGHT = 200; // assume no speed above 200 km/t
 
+	private static double[] speeds;
+	
 	private GPSComputer gpscomputer;
 	private GPSPoint[] gpspoints;
 	
@@ -22,9 +24,9 @@ public class ShowSpeed extends EasyGraphics {
 
 		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
 		gpscomputer = new GPSComputer(filename);
-
-		gpspoints = gpscomputer.getGPSPoints();
 		
+		gpspoints = gpscomputer.getGPSPoints();
+		speeds = gpscomputer.speeds();
 	}
 	
 	// read in the files and draw into using EasyGraphics
@@ -51,7 +53,9 @@ public class ShowSpeed extends EasyGraphics {
 		int space = 0;
 		
 		for (int i = 0; i < N; i++){
-			double[] speedArray = GPSComputer.speeds();
+			// HENTER 
+			
+			double[] speedArray = speeds;
 			double velocity = speedArray[i];
 
 			if (velocity < 0) {velocity = 0;}
