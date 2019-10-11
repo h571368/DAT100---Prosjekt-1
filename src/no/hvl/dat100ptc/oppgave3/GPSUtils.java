@@ -54,6 +54,7 @@ public class GPSUtils { // Tror kommafeil i test_printDouble kommer fra språkdif
 		longitudes[i] = gpspoints[i].getLongitude();
 		i++;
 		}
+		
 		return longitudes;
 	}
 	
