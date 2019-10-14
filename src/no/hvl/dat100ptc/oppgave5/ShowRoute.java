@@ -22,8 +22,8 @@ public class ShowRoute extends EasyGraphics {
 	private static double[] elevations;
 	
 	private static int MARGIN = 50;
-	private static int MAPXSIZE = 800;
-	private static int MAPYSIZE = 800;
+	private static int MAPXSIZE = 600;
+	private static int MAPYSIZE = 600;
 
 	private GPSPoint[] gpspoints;
 	private GPSComputer gpscomputer;
@@ -62,9 +62,13 @@ public class ShowRoute extends EasyGraphics {
 
 		double maxlon = GPSUtils.findMax(longitudes);
 		double minlon = GPSUtils.findMin(longitudes);
-
+		
+		System.out.println("LonMax: " + maxlon + " LonMin:  " + minlon + " --- " + (maxlon - minlon) + " --- "); //TEST ----------
+		
 		double xstep = MAPXSIZE / (Math.abs(maxlon - minlon)); 
-
+		
+		System.out.println("MAPXSIZE: " + xstep + " --- "); //TEST ----------
+		
 		return xstep;
 	}
 
@@ -92,6 +96,18 @@ public class ShowRoute extends EasyGraphics {
 		int lastX = 0;
 		int lastY = 0;
 		
+		for (int i = 0; i < gpspoints.length; i++){
+
+			GPSPoint point = gpspoints[i];
+			double longitude = point.getLongitude();
+			double latitude = point.getLatitude();
+			
+			int xAxis = MARGIN + (int) (Math.abs(longitude - minlon) * xstep);
+			int yAxis = ybase -  (int) (Math.abs(latitude - minlat) * ystep);
+
+		fillCircle(xAxis, yAxis, 4);
+		}
+		
 
 		
 	}
@@ -112,7 +128,6 @@ public class ShowRoute extends EasyGraphics {
 
 		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
 		
 		// TODO - SLUTT
 	}

@@ -47,6 +47,7 @@ public class ShowProfile extends EasyGraphics {
 		// TODO - START
 
 		int space = 0;
+		setColor(0, 0, 255);
 		
 		for (int i = 0; i < N; i++){
 
@@ -57,7 +58,7 @@ public class ShowProfile extends EasyGraphics {
 
 			int startEndPointX = MARGIN + space;
 			int startPointY = ybase - (int) height;
-			space += 2;
+			space += 3;
 
 		drawLine(startEndPointX, startPointY, startEndPointX, ybase);
 		}

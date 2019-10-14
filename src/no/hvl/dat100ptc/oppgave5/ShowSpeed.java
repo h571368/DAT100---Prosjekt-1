@@ -47,14 +47,13 @@ public class ShowSpeed extends EasyGraphics {
 		
 		System.out.println("Angi tidsskalering i tegnevinduet ...");
 		int timescaling = Integer.parseInt(getText("Tidsskalering"));
-				
-		// TODO - START
-
+		
+		int avarageSpeed = ybase - (int) gpscomputer.averageSpeed();
 		int space = 0;
 		
 		for (int i = 0; i < N; i++){
-			// HENTER 
-			
+			 
+			setColor(0, 0, 255);
 			double[] speedArray = speeds;
 			double velocity = speedArray[i];
 
@@ -62,10 +61,11 @@ public class ShowSpeed extends EasyGraphics {
 
 			int startEndPointX = MARGIN + space;
 			int startPointY = ybase - (int) velocity;
-			space += 2;
+			space += timescaling + 1;
 
-			drawLine(startEndPointX, startPointY, startEndPointX, ybase);
+			fillRectangle(startEndPointX, startPointY, timescaling, ybase);
 		}
-		// TODO - SLUTT
+		setColor(0, 255, 0);
+		drawLine(MARGIN, avarageSpeed, MARGIN + N*(timescaling+1), avarageSpeed);
 	}
 }
