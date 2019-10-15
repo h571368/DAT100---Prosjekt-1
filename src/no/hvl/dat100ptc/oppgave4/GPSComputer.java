@@ -160,21 +160,29 @@ public class GPSComputer {
 	private static double WEIGHT = 80.0;
 
 	
-	public void displayStatistics() {
-
+	public String[] displayStatistics() {
+		
+		String[] statistics = new String[6];
+		statistics[0] = "Total time------------" + GPSUtils.formatTime(totalTime());
+		statistics[1] = "Total distance--------" + GPSUtils.formatDouble((totalDistance()/1000))+" km";
+		statistics[2] = "Total elevation-------" + GPSUtils.formatDouble(totalElevation())+" m";
+		statistics[3] =	"Max speed-------------" + GPSUtils.formatDouble(maxSpeed())+" km/t";
+		statistics[4] = "Average speed---------" + GPSUtils.formatDouble(averageSpeed())+" km/t";
+		statistics[5] = "Energy----------------" + GPSUtils.formatDouble(totalKcal(WEIGHT)) +" kcal";
+				
+				
+		System.out.println("==============================================");
+		
+		System.out.println(statistics[0]);
+		System.out.println(statistics[1]);
+		System.out.println(statistics[2]);
+		System.out.println(statistics[3]);
+		System.out.println(statistics[4]);
+		System.out.println(statistics[5]);
 		
 		System.out.println("==============================================");
 		
-		System.out.println("Total time		:	" + GPSUtils.formatTime(totalTime()));
-		System.out.println("Total distance  	:	" + GPSUtils.formatDouble((totalDistance()/1000))+" km");
-		System.out.println("Total elevation 	:	" + GPSUtils.formatDouble(totalElevation())+" m");
-		System.out.println("Max speed       	:	" + GPSUtils.formatDouble(maxSpeed())+" km/t");
-		System.out.println("Average speed   	:	" + GPSUtils.formatDouble(averageSpeed())+" km/t");
-		System.out.println("Energy          	:	" + GPSUtils.formatDouble(totalKcal(WEIGHT)) +" kcal");
-		
-		System.out.println("==============================================");
-		
-		
+		return statistics;
 		// TODO - SLUTT
 		
 	}
