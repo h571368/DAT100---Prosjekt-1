@@ -87,6 +87,9 @@ public class ShowRoute extends EasyGraphics {
 
 		double xstep = xstep();
 		double ystep = ystep();
+		
+		double step = xstep;
+		if (xstep < ystep) {step = ystep;}
 
 		double minlon = GPSUtils.findMin(longitudes);
 		double minlat = GPSUtils.findMin(latitudes);
@@ -103,10 +106,18 @@ public class ShowRoute extends EasyGraphics {
 			double latitude = point.getLatitude();
 			
 			int xAxis = MARGIN + (int) (Math.abs(longitude - minlon) * xstep);
-			int yAxis = ybase -  (int) (Math.abs(latitude - minlat) * ystep);
-
-		fillCircle(xAxis, yAxis, 4);
+			int yAxis = ybase - (int) (Math.abs(latitude - minlat) * ystep);
+			
+			if (lastX == 0) {lastX = xAxis;}
+			if (lastY == 0) {lastY = yAxis;}
+			fillCircle(xAxis, yAxis, 4);
+			drawLine(lastX, lastY, xAxis, yAxis);
+		
+		lastX = xAxis;
+		lastY = yAxis;
 		}
+		
+		//moveCircle(int id, int x, int y);
 		
 
 		
