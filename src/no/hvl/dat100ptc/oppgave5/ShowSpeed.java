@@ -61,11 +61,11 @@ public class ShowSpeed extends EasyGraphics {
 
 			int startEndPointX = MARGIN + space;
 			int startPointY = ybase - (int) velocity;
-			space += timescaling + 1;
+			space += 2;
 
-			fillRectangle(startEndPointX, startPointY, timescaling, ybase);
+			fillRectangle(startEndPointX, startPointY, 1, ybase);
 		}
 		setColor(0, 255, 0);
-		drawLine(MARGIN, avarageSpeed, MARGIN + N*(timescaling+1), avarageSpeed);
+		drawLine(MARGIN, avarageSpeed, MARGIN + N*2, avarageSpeed);
 	}
 }

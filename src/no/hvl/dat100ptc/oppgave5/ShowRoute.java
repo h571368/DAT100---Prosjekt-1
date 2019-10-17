@@ -126,8 +126,6 @@ public class ShowRoute extends EasyGraphics {
 		setColor(0, 0, 0);
 		setFont("Arial", 12);
 
-		gpscomputer.displayStatistics();
-
 		for (int i = 0; i < statistics.length; i++) {
 			drawString(statistics[i], TEXTDISTANCE, TEXTDISTANCE * (i + 1));
 		}
