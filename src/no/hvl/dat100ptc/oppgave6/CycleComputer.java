@@ -12,6 +12,12 @@ import no.hvl.dat100ptc.oppgave4.GPSComputer;
 
 public class CycleComputer extends EasyGraphics {
 
+	private static int[] times;
+	private static double[] speeds;
+	private static double[] latitudes;
+	private static double[] longitudes;
+	private static double[] elevations;
+	
 	private static int SPACE = 10;
 	private static int MARGIN = 20;
 	
@@ -20,6 +26,7 @@ public class CycleComputer extends EasyGraphics {
 	private static int ROUTEMAPYSIZE = 400; 
 	private static int HEIGHTSIZE = 200;
 	private static int TEXTWIDTH = 200;
+	
 
 	private GPSComputer gpscomp;
 	private GPSPoint[] gpspoints;
@@ -36,6 +43,11 @@ public class CycleComputer extends EasyGraphics {
 
 		gpscomp = new GPSComputer(filename);
 		gpspoints = gpscomp.getGPSPoints();
+		speeds = gpscomp.speeds();
+		times = GPSUtils.getTimes(gpspoints);
+		latitudes = GPSUtils.getLatitudes(gpspoints);
+		longitudes = GPSUtils.getLongitudes(gpspoints);
+		elevations = GPSUtils.getElevations(gpspoints);
 
 	}
 
@@ -67,18 +79,59 @@ public class CycleComputer extends EasyGraphics {
 	
 	public void bikeRoute() {
 
-		throw new UnsupportedOperationException(TODO.method());
+		int ybase = MARGIN + ROUTEMAPYSIZE;
+		double xstep = xstep();
+		double ystep = ystep();
 
+		double minlon = GPSUtils.findMin(longitudes);
+		double minlat = GPSUtils.findMin(latitudes);
+
+		setColor(0, 255, 0); // green
+
+		// draw the locations
+		
+		int lastX = 0;
+		int lastY = 0;
+		for (int i = 0; i < latitudes.length; i++) {
+
+			int x,y;
+
+			
+			x = MARGIN + (int) ((longitudes[i] - minlon) * xstep);
+			y = ybase - (int) ((latitudes[i] - minlat) * ystep);
+			
+			fillCircle(x,y,3);
+			
+			if(i > 0) {
+				drawLine(lastX, lastY, x, y);
+			}
+			lastX = x;
+			lastY = y;
+		}
+		
 	}
+
 
 	public double xstep() {
 
-		throw new UnsupportedOperationException(TODO.method());
+		double maxlon = GPSUtils.findMax(longitudes);
+		double minlon = GPSUtils.findMin(longitudes);
+
+		double xstep = ROUTEMAPXSIZE / (Math.abs(maxlon - minlon)); 
+
+		return xstep;
 	}
 
 	public double ystep() {
 
-		throw new UnsupportedOperationException(TODO.method());
+		double maxlat = GPSUtils.findMax(latitudes);
+		double minlat = GPSUtils.findMin(latitudes);
+
+		double ystep = ROUTEMAPXSIZE / (Math.abs(maxlat - minlat)); 
+		
+		// OPPGAVE SLUTT
+		
+		return ystep;
 	}
 
 }
