@@ -73,11 +73,25 @@ public class GPSComputer {
 		}
 		return totaltime;
 	}
+	
+	public void climbs() {
+		
+		//WIP climb in percentage
+		double[] climbs = new double[gpspoints.length-1];
+		double[] Elevations = GPSUtils.getElevations(gpspoints);
+			
+		int i = 1;
+		while(i < gpspoints.length) {
+		double distance = GPSUtils.distance(gpspoints[i-1],gpspoints[i]);
+		double elevation = Elevations[i];
+		climbs[i-1] = elevation/ distance *100;
+		i++;
+		}
+	}
 		
 
 	public double[] speeds() {
 		
-		double speed = 0;
 		double[] speeds = new double[gpspoints.length-1];
 			
 		int i = 1;
@@ -113,7 +127,7 @@ public class GPSComputer {
 	// conversion factor m/s to miles per hour
 	public static double MS = 2.23693629;
 
-	// beregn kcal gitt weight og tid der kjøres med en gitt hastighet
+	// beregn kcal gitt weight og tid der kjoeres med en gitt hastighet
 	public double kcal(double weight, int secs, double speed) {
 		
 		double kcal = 0;
