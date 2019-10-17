@@ -10,7 +10,7 @@ import no.hvl.dat100ptc.oppgave2.GPSDataFileReader;
 import no.hvl.dat100ptc.oppgave3.GPSUtils;
 import no.hvl.dat100ptc.oppgave4.GPSComputer;
 
-public class CycleComputer extends EasyGraphics { 
+public class CycleComputer extends EasyGraphics {
 
 	private static int SPACE = 10;
 	private static int MARGIN = 20;

@@ -51,7 +51,7 @@ public class ShowSpeed extends EasyGraphics {
 		int avarageSpeed = ybase - (int) gpscomputer.averageSpeed();
 		int space = 0;
 		
-		for (int i = 0; i < N; i++){
+		for (int i = 0; i < N; i++){ 
 			 
 			setColor(0, 0, 255);
 			double[] speedArray = speeds;
