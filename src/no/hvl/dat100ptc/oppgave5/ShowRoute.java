@@ -142,7 +142,7 @@ public class ShowRoute extends EasyGraphics {
 		int xAxis= MARGIN + (int) (Math.abs(gpspoints[0].getLongitude() - minlon) * xstep);
 		int yAxis = ybase - (int) (Math.abs(gpspoints[0].getLatitude() - minlat) * ystep);
 		
-		setColor(0, 0, 255); 
+		setColor(0, 0, 255);
 		setSpeed(1);
 		int cId = fillCircle(xAxis, yAxis, 5);
 		
