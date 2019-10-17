@@ -17,7 +17,7 @@ public class CycleComputer extends EasyGraphics {
 	
 	// FIXME: take into account number of measurements / gps points
 	private static int ROUTEMAPXSIZE = 800; 
-	private static int ROUTEMAPYSIZE = 400;
+	private static int ROUTEMAPYSIZE = 400; 
 	private static int HEIGHTSIZE = 200;
 	private static int TEXTWIDTH = 200;
 

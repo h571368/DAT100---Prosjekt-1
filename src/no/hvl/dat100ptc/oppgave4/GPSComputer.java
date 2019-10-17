@@ -84,7 +84,7 @@ public class GPSComputer {
 		while(i < gpspoints.length) {
 		double distance = GPSUtils.distance(gpspoints[i-1],gpspoints[i]);
 		double elevation = Elevations[i];
-		climbs[i-1] = elevation/ distance *100;
+		climbs[i-1] = elevation/ distance *100; 
 		i++;
 		}
 	}
