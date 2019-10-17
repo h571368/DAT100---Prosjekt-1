@@ -19,7 +19,7 @@ public class ShowProfile extends EasyGraphics {
 	
 	private GPSPoint[] gpspoints;
 
-	public ShowProfile() { 
+	public ShowProfile() {
 
 		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
 		GPSComputer gpscomputer =  new GPSComputer(filename);
